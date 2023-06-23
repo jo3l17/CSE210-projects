@@ -16,6 +16,7 @@ class Program
       switch (option)
       {
         case 1:
+          // Gets a random scripture from the file, and format it
           Book rndBook = books[rnd.Next(books.Count - 1)];
           Chapter rndChapter = rndBook.chapters[rnd.Next(rndBook.chapters.Count - 1)];
           Verse rndVerse = rndChapter.verses[rnd.Next(rndChapter.verses.Count - 1)];
@@ -25,6 +26,7 @@ class Program
           Play(rndScripture);
           break;
         case 2:
+          // Gets a reference from the book of Mormon I.E Alma 7:11-12, and then get it from the file and format.
           Console.WriteLine("type a reference to the book of mormon, I.E Alma 7:11-12, type quit to go back");
           string scripturePrompt = Console.ReadLine();
           string regex = "[0-9]?[ ]?[A-Za-z]+[ ][0-9]+:?[0-9]?[0-9]?-?[0-9]?";
@@ -44,9 +46,10 @@ class Program
             }
             break;
           }
+          // Split the prompt from the user to find the book, chapter and verse(s) on the file
           string bookToFind = scripturePrompt.Split(" ")[0];
           string[] scriptureSplitted = scripturePrompt.Split(" ");
-          bool hasVerses = scripturePrompt.Split(":").Count() > 1;
+          // If this value is a number it means the book has a number at the begginning I.E "1 Nephi"
           bool isNumber = Regex.IsMatch(bookToFind, @"\d");
           if (isNumber)
           {
@@ -56,6 +59,8 @@ class Program
           int chapterNum = int.Parse(chapter.Split(":")[0]);
           int verse = 0;
           int endVerse = 0;
+          // if there is a number after a ":" after the chapter that means it will look for specific verses
+          bool hasVerses = chapter.Split(":").Count() > 1;
           if (hasVerses)
           {
             string verses = scripturePrompt.Split(":")[1];
@@ -67,35 +72,40 @@ class Program
             }
             if (endVerse <= verse && endVerse != 0)
             {
-              Console.WriteLine("The end verse has to be greater than the initial verse");
+              Console.WriteLine("\nThe end verse needs to be greater than the initial verse\n");
               break;
             }
           }
+          // Check that the book exists in the file
           int selectedBookPos = books.FindIndex(book => book.book == bookToFind);
           if (selectedBookPos < 0)
           {
-            Console.WriteLine("That book doesn't exists in the book of Mormon");
+            Console.WriteLine("\nThat book doesn't exists in the book of Mormon\n");
             break;
           }
           Book selectedBook = books[selectedBookPos];
+          // Check that the chapter exists in the book
           bool chapterExists = selectedBook.chapters.Count() >= chapterNum;
           if (!chapterExists)
           {
-            Console.WriteLine($"That Chapter doesn't exists in {selectedBook} in the book of Mormon");
+            Console.WriteLine($"\nThat Chapter doesn't exists in {selectedBook.book} in the book of Mormon\n");
             break;
           }
           Chapter selectedChapter = selectedBook.chapters[chapterNum - 1];
+          // Check that the verse exists in the Chapter
           bool verseExists = selectedChapter.verses.Count() >= verse && selectedChapter.verses.Count() >= endVerse;
           if (!verseExists)
           {
-            Console.WriteLine($"That or those Verses doesn't exists in {selectedBook} {selectedChapter} in the book of Mormon");
+            Console.WriteLine($"\nThat or those Verses doesn't exists in {selectedBook.book} {selectedChapter.chapter} in the book of Mormon\n");
             break;
           }
+          // Select a range of verses, in case no verses are given the whole chapter is selected
           List<Verse> selectedVerses = selectedChapter.verses.GetRange(0, selectedChapter.verses.Count());
           if (hasVerses)
           {
             selectedVerses = selectedChapter.verses.GetRange(verse - 1, endVerse != 0 ? endVerse - verse + 1 : 1);
           }
+          // Format the cod
           string joinedVerses = string.Join(" ", selectedVerses.Select(verse => verse.text));
           Reference selectedReference = new Reference(selectedBook.book, selectedChapter.chapter, verse);
           if (endVerse != 0)
@@ -114,7 +124,6 @@ class Program
   }
   public static int DisplayMenu()
   {
-    Console.Clear();
     Console.WriteLine("This app only supports Book of Mormon references for now, select an option");
     Console.WriteLine("1. Random Scripture");
     Console.WriteLine("2. Find Scripture");
@@ -140,6 +149,7 @@ class Program
       string input = Console.ReadLine();
       if (input == "quit" || scripture.IsCompletelyHidden())
       {
+        Console.Clear();
         quit = true;
         break;
       }
@@ -149,6 +159,7 @@ class Program
   }
 }
 
+// The following classes are only to structure the JSON file
 class JSONBooks
 {
   public List<Book> books { get; set; }
