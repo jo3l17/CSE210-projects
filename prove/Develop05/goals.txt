@@ -1,0 +1,5 @@
+200
+SimpleGoal:Temple,Go to the temple,20,True
+EternalGoal:Prayer,do a prayer end,10
+CheckListGoal:Read scriptures,read the scriptures during the week,30,300,5,3
+NegativeGoal:Not morning prayer,waking up and not doing the morning prayer,-20
