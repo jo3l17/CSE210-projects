@@ -1,0 +1,1 @@
+ExpenseTransaction:200,7/18/2023,groceries,Walmart

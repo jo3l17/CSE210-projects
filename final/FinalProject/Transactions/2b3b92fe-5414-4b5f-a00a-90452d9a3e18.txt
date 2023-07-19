@@ -1,0 +1,2 @@
+ExpenseTransaction:50,7/18/2023,birthday cake,Walmart
+ExpenseTransaction:200,7/18/2023,new SSD for laptop,E-bay

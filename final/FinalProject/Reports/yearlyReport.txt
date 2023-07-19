@@ -1,0 +1,8 @@
+Budget: Year expenses for Year 2023
+Limit: 50000
+Percentage completed: 2.800
+[=---------]
+Transactions:
+Income: bank - 100 - 7/18/2023 - pay from bank
+Expense: Amazon - 1500 - 7/18/2023 - Nintendo switch
+-------------------------

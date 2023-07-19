@@ -1,0 +1,2 @@
+IncomeTransaction:100,7/18/2023,pay from bank,bank
+ExpenseTransaction:1500,7/18/2023,Nintendo switch,Amazon

@@ -1,0 +1,8 @@
+Budget: Personal for November
+Limit: 500
+Percentage completed: 50.0
+[=====-----]
+Transactions:
+Expense: Walmart - 50 - 7/18/2023 - birthday cake
+Expense: E-bay - 200 - 7/18/2023 - new SSD for laptop
+-------------------------

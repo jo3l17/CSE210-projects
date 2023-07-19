@@ -1,0 +1,2 @@
+MonthlyBudget:2b3b92fe-5414-4b5f-a00a-90452d9a3e18,Personal,500,10
+YearlyBudget:dfc5b8f2-0114-4ee5-ba12-4fea989a398f,Year expenses,50000,2023

@@ -1,0 +1,7 @@
+Budget: General for May
+Limit: 1000
+Percentage completed: 20.0
+[==--------]
+Transactions:
+Expense: Walmart - 200 - 7/18/2023 - groceries
+-------------------------
