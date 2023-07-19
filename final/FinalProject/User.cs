@@ -5,7 +5,6 @@ public class User
   private string _password;
   private List<Budget> _budgets;
   private List<Transaction> _transactions;
-  private List<Goal> _goals;
   private string _id;
   public User(string name, string email, string password, string id = "")
   {
@@ -15,7 +14,6 @@ public class User
     _budgets = new List<Budget>();
     _budgets = new List<Budget>();
     _transactions = new List<Transaction>();
-    _goals = new List<Goal>();
     _id = id == "" ? Guid.NewGuid().ToString() : id;
   }
   public static User Login(List<User> users, string email, string password)
